@@ -1,0 +1,19 @@
+[package]
+name = "FaceRust-Messenger"
+version = "0.1.0"
+authors = ["Javi Facu Nacho"]
+edition = "2018"
+
+[[bin]]
+name = "client"
+path = "src/Client/client_main.rs"
+
+[[bin]]
+name = "server"
+path = "src/Server/server_main.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+bufstream = "0.1.4"
+termion = "1.1.1"
+
