@@ -16,14 +16,15 @@ impl ChatRoom {
     pub fn new(max_clients: usize) -> ChatRoom {
         let clients = Vec::with_capacity(max_clients);
         let mut messages : VecDeque<String> = VecDeque::new();
+
         ChatRoom{clients: clients,
                  server_running: AtomicBool::new(false),
                  messages: Arc::new(Mutex::new(messages)) }
     }
 
     pub fn add_client(&mut self, stream: TcpStream)  -> usize {
-        let p_queue = self.messages.clone();
-        let mut client = Box::new(ThreadClient::new(stream, p_queue));
+        let messages_clone = self.messages.clone();
+        let mut client = Box::new(ThreadClient::new(stream, messages_clone));
         client.start();
         self.clients.push(client);
         return self.clients.len();

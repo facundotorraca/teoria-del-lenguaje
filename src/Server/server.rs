@@ -43,14 +43,15 @@ impl Server {
         let listener_clone = self.listener.clone();
         let chat_room_clone = self.chat_room.clone();
 
-        let handler =  thread::spawn(move || { wait_clients(listener_clone,
-                                                                           chat_room_clone); });
+        let handler =  thread::spawn(move || { wait_clients(listener_clone, chat_room_clone); });
 
-        *self.running.get_mut() = true;
+        *self.running.get_mut() = true; //Atomic bool running -> true
 
         while *self.running.get_mut() {
             self.chat_room.lock().unwrap().update_clients();
+            /* here chat_room is unlocked */
         }
+
         handler.join();
     }
 }
