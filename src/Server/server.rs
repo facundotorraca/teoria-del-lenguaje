@@ -7,12 +7,6 @@ use std::time::Duration;
 
 const MAX_CLIENTS: usize = 32;
 
-pub struct Server {
-    running: AtomicBool,
-    listener: Arc<Mutex<TcpListener>>,
-    chat_room: Arc<Mutex<ChatRoom>>,
-}
-
 fn wait_clients(listener: Arc<Mutex<TcpListener>>, chat_room: Arc<Mutex<ChatRoom>>) {
     let mut listener_shared = listener.lock().unwrap();
 
@@ -21,6 +15,12 @@ fn wait_clients(listener: Arc<Mutex<TcpListener>>, chat_room: Arc<Mutex<ChatRoom
         let number_of_clients= chat_room.lock().unwrap().add_client(stream.unwrap());
         println!("New Client accepted: {} clients connected", number_of_clients);
     }
+}
+
+pub struct Server {
+    running: AtomicBool,
+    listener: Arc<Mutex<TcpListener>>,
+    chat_room: Arc<Mutex<ChatRoom>>,
 }
 
 impl Server {

@@ -28,6 +28,9 @@ fn run(writer: Arc<Mutex<BufWriter<TcpStream>>>, username: String) {
     let mut input_buffer = String::new();
 
     loop {
+        print!("{}: ", &username);
+        io::stdout().flush();
+
         io::stdin().read_line(&mut input_buffer);
         input_buffer = input_buffer.replace("\n", "");
 
@@ -92,9 +95,13 @@ impl Client {
         while *self.running.get_mut() {
             self.reader.lock().unwrap().read_line(&mut msg_buffer);
             msg_buffer = msg_buffer.replace("\n", "");
-            println!("{}", msg_buffer);
+            println!("\r{}", msg_buffer);
             msg_buffer.clear();
+
+            print!("{}: ", &self.username);
+            io::stdout().flush();
         }
+
         self.handler = ThreadHandler::JoinHandler(handler);
     }
 }
