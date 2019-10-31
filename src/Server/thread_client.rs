@@ -26,7 +26,7 @@ fn run(reader: Arc<Mutex<BufReader<TcpStream>>>, messages: Sender<String>, usern
                         break; },
 
             Ok(_) => {  let incoming_message = String::from(username_prefix.to_owned() + &buffer.to_owned() ).replace("\n", "");
-                        messages.send(incoming_message);
+                        messages.send(incoming_message).unwrap();
                         buffer.clear();
                       }
         }
