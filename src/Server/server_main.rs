@@ -11,11 +11,7 @@ fn main() -> io::Result<()> {
     println!("/*-----------------------------------------------------*/");
 
     /* "?" -> "error propagation" */
-    println!("/*------------------Introduce a HOST-------------------*/");
-    let mut host = String::new();
-    io::stdin().read_line(&mut host)?;
-    host = host.replace("\n", "");
-    println!("/*-----------------------------------------------------*/");
+    let host = "localhost";
 
     println!("/*------------------Introduce a PORT-------------------*/");
     let mut port= String::new();

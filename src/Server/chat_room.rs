@@ -32,11 +32,9 @@ impl ChatRoom {
     }
 
     pub fn update_clients(&mut self) {
-        while !self.messages.lock().unwrap().is_empty() {
-            let message = self.messages.lock().unwrap().pop_front().unwrap();
-            for client in self.clients.iter_mut() {
-                client.send_message(&message);
-            }
+        let message = self.messages.recv().unwrap();
+        for client in self.clients.iter_mut() {
+            client.send_message(&message);
         }
     }
 }

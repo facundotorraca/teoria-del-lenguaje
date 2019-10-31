@@ -8,7 +8,7 @@ use std::time::Duration;
 const MAX_CLIENTS: usize = 32;
 
 fn wait_clients(listener: Arc<Mutex<TcpListener>>, chat_room: Arc<Mutex<ChatRoom>>) {
-    let mut listener_shared = listener.lock().unwrap();
+    let listener_shared = listener.lock().unwrap();
 
     println!("/*-----------------WAINTING_NEW_CLIENTS----------------*/");
     for stream in listener_shared.incoming() {
