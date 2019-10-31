@@ -9,31 +9,33 @@ use std::time::Duration;
 
 pub struct ChatRoom {
     server_running: AtomicBool,
-    clients: Vec<Box<ThreadClient>>,
-    messages: Receiver<String>,
-    sender: Sender<String>
+    clients: Mutex<Vec<Box<ThreadClient>>>,
+    messages: Mutex<Receiver<String>>,
+    sender: Mutex<Sender<String>>
 }
 
 impl ChatRoom {
     pub fn new(max_clients: usize) -> ChatRoom {
-        let clients = Vec::with_capacity(max_clients);
+        let clients = Mutex::new(Vec::with_capacity(max_clients));
         let (sender, receiver) = channel();
+        let receiver = Mutex::new(receiver);
+        let sender = Mutex::new(sender);
         ChatRoom{clients: clients,
                  server_running: AtomicBool::new(false),
                  messages: receiver, sender: sender }
     }
 
-    pub fn add_client(&mut self, stream: TcpStream)  -> usize {
-        let p_queue = self.sender.clone();
+    pub fn add_client(&self, stream: TcpStream) -> usize {
+        let p_queue = self.sender.lock().unwrap().clone();
         let mut client = Box::new(ThreadClient::new(stream, p_queue));
         client.start();
-        self.clients.push(client);
-        return self.clients.len();
+        self.clients.lock().unwrap().push(client);
+        return self.clients.lock().unwrap().len();
     }
 
-    pub fn update_clients(&mut self) {
-        for message in self.messages.iter() {
-            for client in self.clients.iter_mut() {
+    pub fn update_clients(&self) {
+        for message in self.messages.lock().unwrap().iter() {
+            for client in self.clients.lock().unwrap().iter_mut() {
                 client.send_message(&message);
             }
         }

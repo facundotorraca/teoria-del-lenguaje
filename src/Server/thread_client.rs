@@ -73,8 +73,8 @@ impl ThreadClient {
     pub fn start(&mut self) {
         self.get_username();
 
-        let mut reader_clone = self.reader.clone();
-        let mut messages_clone = self.messages.clone();
+        let reader_clone = self.reader.clone();
+        let messages_clone = self.messages.clone();
         let username_clone = self.username.clone();
         let dead_clone = self.dead.clone();
 
