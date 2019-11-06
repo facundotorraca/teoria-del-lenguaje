@@ -3,16 +3,11 @@ use bufstream::BufStream;
 use std::net::{TcpStream};
 use std::sync::{Mutex, Arc, RwLock};
 use std::collections::VecDeque;
-use std::io::{Read, Write, BufRead, BufWriter, BufReader};
+use std::io::{Read, Write, BufRead, BufWriter, BufReader, Error};
 use std::sync::atomic::AtomicBool;
 
 enum ThreadHandler {
     JoinHandler(thread::JoinHandle<()>), //Thread running
-    Nil //Thread not spawned
-}
-
-enum Username {
-    Username(String), //Thread running
     Nil //Thread not spawned
 }
 
@@ -93,13 +88,19 @@ impl Client {
         let mut msg_buffer = String::new();
 
         while *self.running.get_mut() {
-            self.reader.lock().unwrap().read_line(&mut msg_buffer);
-            msg_buffer = msg_buffer.replace("\n", "");
-            println!("\r{}", msg_buffer);
-            msg_buffer.clear();
+            match self.reader.lock().unwrap().read_line(&mut msg_buffer) {
+                Ok(0) => {println!("Server OFF"); break; }
 
-            print!("{}: ", &self.username);
-            io::stdout().flush();
+                Err(_) => {println!("Receive ERROR"); break; }
+
+                Ok(_) => {  msg_buffer = msg_buffer.replace("\n", "");
+                            println!("\r{}", msg_buffer);
+                            msg_buffer.clear();
+
+                            print!("{}: ", &self.username);
+                            io::stdout().flush();
+                }
+            }
         }
 
         self.handler = ThreadHandler::JoinHandler(handler);
