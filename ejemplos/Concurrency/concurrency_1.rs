@@ -39,7 +39,7 @@ fn move_from_to(from : Arc<Vec<Numero>>, to : Arc<Vec<Numero>>) {
 
 fn move_from_to(from : &Arc<Mutex<Vec<Numero>>>, to : &Arc<Mutex<Vec<Numero>>>, id: i32) {
     println!("By {}", id);
-    if let Some(numero) = from.lock().unwrap().pop() {
+    if let Some(numero)= from.lock().unwrap().pop() {
         to.lock().unwrap().push(numero);
     }
 }

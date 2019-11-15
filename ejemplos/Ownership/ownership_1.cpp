@@ -1,5 +1,5 @@
-#include <iostream>
 #include <vector>
+#include <iostream>
 
 /*--------------------------------------------------*/
 /* C++ al realizar un move no elimina al objeto del */
@@ -50,7 +50,7 @@ int main() {
     funcion_que_hace_algo_con_string(std::move(string));
     std::cout << "Quedo algo? " << string << std::endl;
 
-    std::vector<int *> vector_de_punteros;
+    std::vector<int*> vector_de_punteros;
     vector_de_punteros.push_back(new int(1));
     funcion_que_hace_algo_con_vector(std::move(vector_de_punteros));
     std::cout << "Quedo algo?" << *vector_de_punteros[0] << std::endl;

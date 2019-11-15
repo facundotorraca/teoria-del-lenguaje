@@ -17,6 +17,10 @@ name = "r_owneship_1"
 path = "ejemplos/Ownership/ownership_1.rs"
 
 [[bin]]
+name = "r_owneship_2"
+path = "ejemplos/Ownership/ownership_2.rs"
+
+[[bin]]
 name = "r_concurrency_1"
 path = "ejemplos/Concurrency/concurrency_1.rs"
 
