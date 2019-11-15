@@ -16,6 +16,10 @@ path = "src/Server/server_main.rs"
 name = "r_owneship_1"
 path = "ejemplos/Ownership/ownership_1.rs"
 
+[[bin]]
+name = "r_concurrency_1"
+path = "ejemplos/Concurrency/concurrency_1.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
 bufstream = "0.1.4"

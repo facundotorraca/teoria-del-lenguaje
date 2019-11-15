@@ -11,8 +11,11 @@ include_directories(ejemplos)
 
 # Archivos generados por CMake
 include_directories(${PROJECT_BINARY_DIR}/ejemplos)
-include_directories(${Qt5Widgets_INCLUDE_DIRS})
 
 add_subdirectory(ejemplos/Ownership)
+add_subdirectory(ejemplos/Concurrency)
 
 add_executable(c_ownership_1 ejemplos/Ownership/ownership_1.cpp)
+add_executable(c_concurrency_1 ejemplos/Concurrency/concurrency_1.cpp)
+
+target_link_libraries(c_concurrency_1 pthread)
