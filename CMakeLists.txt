@@ -16,6 +16,7 @@ add_subdirectory(ejemplos/Ownership)
 add_subdirectory(ejemplos/Concurrency)
 
 add_executable(c_ownership_1 ejemplos/Ownership/ownership_1.cpp)
+add_executable(c_ownership_2 ejemplos/Ownership/ownership_2.cpp)
 add_executable(c_concurrency_1 ejemplos/Concurrency/concurrency_1.cpp)
 
 target_link_libraries(c_concurrency_1 pthread)
