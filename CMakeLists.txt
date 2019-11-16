@@ -7,7 +7,7 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS OFF) # -std=c++11 en lugar de -std=gnu++11
 
 # Todos los #include son relativos a ejemplos
-include_directories(ejemplos)
+include_directories(ejemplos_facu)
 
 # Archivos generados por CMake
 include_directories(${PROJECT_BINARY_DIR}/ejemplos)

@@ -22,9 +22,8 @@ fn main() -> io::Result<()> {
 
     println!("{}", tdl);
 
-    /*
     string.push_str("HOLA");
     println!("{}", string);
-*/
+
     return Ok(())
 }
