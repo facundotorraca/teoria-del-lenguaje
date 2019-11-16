@@ -12,11 +12,11 @@ include_directories(ejemplos)
 # Archivos generados por CMake
 include_directories(${PROJECT_BINARY_DIR}/ejemplos)
 
-add_subdirectory(ejemplos/Ownership)
-add_subdirectory(ejemplos/Concurrency)
+add_subdirectory(ejemplos_facu/Ownership)
+add_subdirectory(ejemplos_facu/Concurrency)
 
-add_executable(c_ownership_1 ejemplos/Ownership/ownership_1.cpp)
-add_executable(c_ownership_2 ejemplos/Ownership/ownership_2.cpp)
-add_executable(c_concurrency_1 ejemplos/Concurrency/concurrency_1.cpp)
+add_executable(c_ownership_1 ejemplos_facu/Ownership/ownership_1.cpp)
+add_executable(c_ownership_2 ejemplos_facu/Ownership/ownership_2.cpp)
+add_executable(c_concurrency_1 ejemplos_facu/Concurrency/concurrency_1.cpp)
 
 target_link_libraries(c_concurrency_1 pthread)

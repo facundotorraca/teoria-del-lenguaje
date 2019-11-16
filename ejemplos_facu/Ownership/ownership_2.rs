@@ -1,10 +1,10 @@
 use std::io;
 
-/
+/*
 fn get_random_string() -> &String {
     let string = String::from("Hola");
     return &string;
-}
+}*/
 
 
 fn main() -> io::Result<()> {
@@ -21,7 +21,7 @@ fn main() -> io::Result<()> {
 
     println!("{}", r3);
 
-    let string = get_random_string();
+    //let string = get_random_string();
 
     Ok(())
 }
