@@ -27,7 +27,7 @@ class Number{
 };
 
 void add_to_100(std::shared_ptr<Number> num, int n){
-    while (num->lessthan(100000)){
+    while (num->lessthan(100)){
         num->add(1);
         //std::cout << "Thread " << n << std::endl;
         //num->show();
