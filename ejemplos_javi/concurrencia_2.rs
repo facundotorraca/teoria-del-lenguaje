@@ -27,25 +27,25 @@ impl Numero{
     }
 }
 
+fn add_to_100(x: & Numero, n: i32){
+    while x.lessthan(100){
+        x.add(1);
+        //println!("Thread {}", n);
+        //x.show();
+    }
+}
+
 fn main() {
     let x = Arc::new(Numero::new(0));
     let y = x.clone();
     let z = x.clone();
 
     let h1 = thread::spawn(move || {
-        while x.lessthan(100){
-            x.add(1);
-            println!("Thread 1");
-            x.show();
-        }
+        add_to_100(&x, 1);
     });
 
     let h2 = thread::spawn(move || {
-        while y.lessthan(100){
-            y.add(1);
-            println!("Thread 2");
-            y.show();
-        }
+        add_to_100(&y, 2);
     });
 
     h1.join().unwrap();
@@ -55,31 +55,3 @@ fn main() {
     z.show();
 
 }
-
-/*fn main(){
-    let x = Arc::new(Mutex::new(Numero{valor: 0}));
-    let y = x.clone();
-    let z = x.clone();
-
-    let handler1 = thread::spawn(move || {
-        let mut safe_x = x.lock().unwrap();
-        while safe_x.lessthan(100){
-            safe_x.add(1);
-            safe_x.show();
-        }
-    });
-
-    let handler2 = thread::spawn(move || {
-        let mut safe_y = y.lock().unwrap();
-        while safe_y.lessthan(100){
-            safe_y.add(1);
-            safe_y.show();
-        }        
-    });
-
-    handler1.join().unwrap();
-    handler2.join().unwrap();
-
-    z.lock().unwrap().show();
-}*/
-
