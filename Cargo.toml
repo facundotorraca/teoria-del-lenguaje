@@ -14,11 +14,15 @@ path = "src/Server/server_main.rs"
 
 [[bin]]
 name = "r_owneship_1"
-path = "ejemplos/Ownership/ownership_1.rs"
+path = "ejemplos_facu/Ownership/ownership_1.rs"
 
 [[bin]]
 name = "r_owneship_2"
 path = "ejemplos_facu/Ownership/ownership_2.rs"
+
+[[bin]]
+name = "r_owneship_3"
+path = "ejemplos_facu/Ownership/ownership_3.rs"
 
 [[bin]]
 name = "r_concurrency_1"
