@@ -1,4 +1,4 @@
-use std::{io, thread};
+use std::{io, thread, env};
 use crate::server::Server;
 use std::sync::{Arc, Mutex};
 
@@ -22,14 +22,13 @@ fn main() -> io::Result<()> {
 
     let host = "localhost";
 
-    println!("/*------------------Introduce a PORT-------------------*/");
-    let mut port= String::new();
-    /* "?" -> "error propagation" */
-    io::stdin().read_line(&mut port)?;
-    port = port.replace("\n", "");
-    println!("/*-----------------------------------------------------*/");
+    let args: Vec<String> = env::args().collect();
+    if args.len() == 1 {
+        println!("Port not specified.");
+        return Ok(());
+    }
 
-    let mut server = Arc::new(Server::new(&host, &port));
+    let mut server = Arc::new(Server::new(&host, &args[1]));
     let mut server_clone = server.clone();
 
     let handler = thread::spawn(move || { server_clone.start();});

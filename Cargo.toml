@@ -40,4 +40,3 @@ path = "ejemplos_javi/concurrencia_2.rs"
 [dependencies]
 bufstream = "0.1.4"
 termion = "1.1.1"
-y

@@ -12,14 +12,14 @@ fn main() -> io::Result<()> {
 
     let r1 = &s; // no problem
     let r2 = &s; // no problem
-
     println!("{}, {}", r1, r2);
 
-    let r3 = &mut s; // BIG PROBLEM
+    let r3 = &mut s;
+    println!("{}", r3);
+
 
     //println!("{}, {}, and {}", r1, r2, r3);
 
-    println!("{}", r3);
 
     //let string = get_random_string();
 

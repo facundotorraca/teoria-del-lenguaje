@@ -12,7 +12,7 @@ public:
 
     Numero(Numero&& otro) {
         this->numero = otro.numero;
-        //otro.numero = nullptr;
+        otro.numero = nullptr;
     }
 
     void imprimir() {
@@ -31,9 +31,11 @@ Numero& get_random_numero() {
 }
 
 int main() {
-    //Numero& number = get_random_numero();
-    //number.imprimir();
+    Numero& number = get_random_numero();
+    number.imprimir();
 
+
+/*
     std::vector<Numero*> numeros { new Numero(1),
                                    new Numero(2),
                                    new Numero(3)
@@ -46,5 +48,6 @@ int main() {
     std::cout << "Length NUMEROS: " << numeros.size() << std::endl;
 
     slicing[0]->imprimir();
+*/
     return 0;
 }
