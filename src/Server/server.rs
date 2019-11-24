@@ -54,9 +54,7 @@ impl Server {
             self.chat_room.update_clients();
         }
 
-        println!("METILDE");
         handler.join();
-        println!("MENTIRA");
     }
 
     pub fn close(&self) {

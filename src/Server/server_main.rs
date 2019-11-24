@@ -20,7 +20,7 @@ fn main() -> io::Result<()> {
     println!("/*             FaceRust Messenger Server               */");
     println!("/*-----------------------------------------------------*/");
 
-    let host = "localhost";
+    let host = "0.0.0.0";
 
     let args: Vec<String> = env::args().collect();
     if args.len() == 1 {
@@ -39,6 +39,3 @@ fn main() -> io::Result<()> {
     handler.join();
     return Ok(());
 }
-
-
-
