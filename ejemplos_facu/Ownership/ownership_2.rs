@@ -10,16 +10,12 @@ fn get_random_string() -> &String {
 fn main() -> io::Result<()> {
     let mut s = String::from("hello");
 
-    let r1 = &s; // no problem
-    let r2 = &s; // no problem
+    let r1 = &s;
+    let r2 = &s;
     println!("{}, {}", r1, r2);
 
     let r3 = &mut s;
     println!("{}", r3);
-
-
-    //println!("{}, {}, and {}", r1, r2, r3);
-
 
     //let string = get_random_string();
 

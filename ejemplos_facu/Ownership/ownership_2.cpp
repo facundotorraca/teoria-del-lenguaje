@@ -35,7 +35,6 @@ int main() {
     number.imprimir();
 
 
-/*
     std::vector<Numero*> numeros { new Numero(1),
                                    new Numero(2),
                                    new Numero(3)
@@ -48,6 +47,6 @@ int main() {
     std::cout << "Length NUMEROS: " << numeros.size() << std::endl;
 
     slicing[0]->imprimir();
-*/
+
     return 0;
 }

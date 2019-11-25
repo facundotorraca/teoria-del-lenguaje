@@ -23,16 +23,10 @@ impl Numero {
 }
 
 
-fn funcion_que_hace_algo_con_string(string: &mut String) {
+fn funcion_que_hace_algo_con_string(string: String) {
     string.push('!');
     println!("{}", &string);
-
 }
-/*
-fn funcion_que_hace_algo_con_vector(mut vector: Vec<Box<i32>>) {
-    vector.push(Box::new(3));
-    println!("{:?}", vector);
-}*/
 
 fn funcion_que_hace_algo_con_numero(numero: Numero) {
     numero.imprimir();
@@ -41,19 +35,13 @@ fn funcion_que_hace_algo_con_numero(numero: Numero) {
 
 fn main() -> io::Result<()> {
     let mut string = String::from("Hola, soy un string");
-    funcion_que_hace_algo_con_string(&mut string);
-    println!("{}", string);
+    funcion_que_hace_algo_con_string(string);
+    //println!("{}", string);
 
-    /*
-    let mut vector : Vec<Box<i32>> = Vec::new();
-    vector.push(Box::new(1));
-    vector.push(Box::new(2));
-    funcion_que_hace_algo_con_vector(vector);
-    //println!("{:?}", vector);*/
-/*
+
     let numero = Numero::new(1);
     funcion_que_hace_algo_con_numero(numero);
-    numero.imprimir();
-*/
+    //numero.imprimir();
+
     return Ok(());
 }

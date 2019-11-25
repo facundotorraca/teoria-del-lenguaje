@@ -13,10 +13,6 @@ include_directories(ejemplos_facu)
 include_directories(${PROJECT_BINARY_DIR}/ejemplos)
 
 add_subdirectory(ejemplos_facu/Ownership)
-add_subdirectory(ejemplos_facu/Concurrency)
 
 add_executable(c_ownership_1 ejemplos_facu/Ownership/ownership_1.cpp)
 add_executable(c_ownership_2 ejemplos_facu/Ownership/ownership_2.cpp)
-add_executable(c_concurrency_1 ejemplos_facu/Concurrency/concurrency_1.cpp)
-
-target_link_libraries(c_concurrency_1 pthread)
