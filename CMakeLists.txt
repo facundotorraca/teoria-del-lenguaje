@@ -12,7 +12,7 @@ include_directories(ejemplos_facu)
 # Archivos generados por CMake
 include_directories(${PROJECT_BINARY_DIR}/ejemplos)
 
-add_subdirectory(ejemplos_facu/Ownership)
+add_subdirectory(ejemplos_facu)
 
-add_executable(c_ownership_1 ejemplos_facu/Ownership/ownership_1.cpp)
-add_executable(c_ownership_2 ejemplos_facu/Ownership/ownership_2.cpp)
+add_executable(c_ownership_1 ejemplos_facu/ownership_1.cpp)
+add_executable(c_ownership_2 ejemplos_facu/ownership_2.cpp)
