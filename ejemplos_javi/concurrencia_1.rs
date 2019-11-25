@@ -25,7 +25,6 @@ impl Numero{
 }
 
 fn main(){
-
 }
 
 /*fn main(){
@@ -46,7 +45,7 @@ fn main(){
         while safe_y.lessthan(100){
             safe_y.add(1);
             safe_y.show();
-        }        
+        }
     });
 
     handler1.join().unwrap();
@@ -54,4 +53,3 @@ fn main(){
 
     z.lock().unwrap().show();
 }*/
-
