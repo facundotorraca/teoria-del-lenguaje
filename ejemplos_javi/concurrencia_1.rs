@@ -25,32 +25,6 @@ impl Numero{
 }
 
 fn main(){
-    let x = Arc::new(Mutex::new(Numero::new(0)));
-    let y = x.clone();
-    let z = x.clone();
-
-    let h1 = thread::spawn(move || {
-        let mut x_safe = x.lock().unwrap();
-        while x_safe.lessthan(100){
-            x_safe.add(1);
-            println!("Thread 1");
-            x_safe.show();
-        }
-    });
-
-    let h2 = thread::spawn(move || {
-        let mut y_safe = y.lock().unwrap();
-        while y_safe.lessthan(100){
-            y_safe.add(1);
-            println!("Thread 2");
-            y_safe.show();
-        }
-    });
-
-    h1.join().unwrap();
-    h2.join().unwrap();
-
-    z.lock().unwrap().show();
 
 }
 
